@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Memories ❤️</title>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  min-height:100vh;
+  font-family:Georgia,serif;
+  background:linear-gradient(135deg,#fff7f2,#f7e8ed,#fff);
+  color:#4b3038;
+  padding:28px 16px 50px;
+}
+header{text-align:center;margin:10px auto 28px;max-width:700px}
+h1{font-size:clamp(30px,7vw,52px);font-weight:500}
+p{margin-top:10px;font-family:Arial,sans-serif;color:#80636b}
+.gallery{
+  max-width:1050px;
+  margin:auto;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:18px;
+}
+.card{
+  background:#fff;
+  padding:10px 10px 14px;
+  border-radius:18px;
+  box-shadow:0 8px 25px rgba(80,40,50,.13);
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.card:hover{transform:translateY(-5px);box-shadow:0 14px 32px rgba(80,40,50,.2)}
+.card img{
+  width:100%;
+  height:390px;
+  object-fit:cover;
+  border-radius:13px;
+  display:block;
+}
+footer{text-align:center;margin-top:30px;font-family:Arial,sans-serif;font-size:14px;color:#9a7b83}
+@media(max-width:600px){.card img{height:420px}}
+</style>
+
+<style>
+.music-box{max-width:520px;margin:0 auto 28px;text-align:center}
+.music-btn{border:0;border-radius:999px;padding:12px 22px;background:#4b3038;color:white;font-size:15px;cursor:pointer;box-shadow:0 6px 18px rgba(80,40,50,.18)}
+.music-status{margin-top:9px;font:13px Arial,sans-serif;color:#9a7b83}
+</style>
+</head>
+<body>
+<header>
+  <h1>Our Memories ❤️</h1>
+  <p>A little collection of beautiful moments.</p>
+</header>
+
+<div class="music-box">
+  <button class="music-btn" id="musicBtn" onclick="toggleMusic()">▶ Play our music</button>
+  <div class="music-status">Tap play to start the background music 🎵</div>
+  <audio id="bgMusic" src="music/background.mp3" loop preload="auto"></audio>
+</div>
+
+<main class="gallery">
+  <div class="card"><img src="images/photo1.jpg" alt="Memory 1" loading="lazy"></div>
+  <div class="card"><img src="images/photo2.jpg" alt="Memory 2" loading="lazy"></div>
+  <div class="card"><img src="images/photo3.jpg" alt="Memory 3" loading="lazy"></div>
+  <div class="card"><img src="images/photo4.jpg" alt="Memory 4" loading="lazy"></div>
+  <div class="card"><img src="images/photo5.jpg" alt="Memory 5" loading="lazy"></div>
+  <div class="card"><img src="images/photo6.png" alt="Memory 6" loading="lazy"></div>
+</main>
+<footer>Made with ❤️</footer>
+<script>
+const music = document.getElementById('bgMusic');
+const btn = document.getElementById('musicBtn');
+function toggleMusic(){
+  if(music.paused){
+    music.play().then(()=>{btn.textContent='⏸ Pause our music';}).catch(()=>{});
+  }else{
+    music.pause();
+    btn.textContent='▶ Play our music';
+  }
+}
+music.addEventListener('ended',()=>btn.textContent='▶ Play our music');
+</script>
+</body>
+</html>
